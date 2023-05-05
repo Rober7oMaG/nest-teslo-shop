@@ -30,8 +30,10 @@ async function bootstrap() {
     'https://rmacias-nest-websockets.netlify.app',
   ];
 
+  const allowedHeaders = ['Content-Type', 'Access-Control-Allow-Origin'];
+
   app.enableCors({
-    allowedHeaders: ['content-type'],
+    allowedHeaders,
     origin: whitelist,
     credentials: true,
   });
