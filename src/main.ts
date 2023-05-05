@@ -25,16 +25,9 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  const whitelist = [
-    'http://localhost:5173',
-    'https://rmacias-nest-websockets.netlify.app',
-  ];
-
-  const allowedHeaders = ['Content-Type', 'Access-Control-Allow-Origin'];
-
   app.enableCors({
-    allowedHeaders,
-    origin: whitelist,
+    allowedHeaders: '*',
+    origin: '*',
     credentials: true,
   });
 
