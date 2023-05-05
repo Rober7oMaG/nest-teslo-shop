@@ -25,7 +25,16 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  app.enableCors();
+  const whitelist = [
+    'http://localhost:5173',
+    'https://rmacias-nest-websockets.netlify.app',
+  ];
+
+  app.enableCors({
+    allowedHeaders: ['content-type'],
+    origin: whitelist,
+    credentials: true,
+  });
 
   await app.listen(process.env.PORT);
   logger.log(`App running in port ${process.env.PORT}`);
